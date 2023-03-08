@@ -7,20 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		883A6FE263355D276BC6F221 /* libPods-MarvelNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CE7ABAC8909F7E3766F9AF1 /* libPods-MarvelNetworking.a */; };
 		DB9B569C29B8954300F4FB18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9B569B29B8954300F4FB18 /* AppDelegate.swift */; };
 		DB9B569E29B8954300F4FB18 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9B569D29B8954300F4FB18 /* SceneDelegate.swift */; };
 		DB9B56A029B8954300F4FB18 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9B569F29B8954300F4FB18 /* ViewController.swift */; };
-		DB9B56A329B8954300F4FB18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB9B56A129B8954300F4FB18 /* Main.storyboard */; };
 		DB9B56A529B8954500F4FB18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB9B56A429B8954500F4FB18 /* Assets.xcassets */; };
 		DB9B56A829B8954500F4FB18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB9B56A629B8954500F4FB18 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CE7ABAC8909F7E3766F9AF1 /* libPods-MarvelNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MarvelNetworking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85B0E29495365E9207F418EC /* Pods-MarvelNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelNetworking.debug.xcconfig"; path = "Target Support Files/Pods-MarvelNetworking/Pods-MarvelNetworking.debug.xcconfig"; sourceTree = "<group>"; };
+		D05917CF7F1A5F88492F08F4 /* Pods-MarvelNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelNetworking.release.xcconfig"; path = "Target Support Files/Pods-MarvelNetworking/Pods-MarvelNetworking.release.xcconfig"; sourceTree = "<group>"; };
 		DB9B569829B8954300F4FB18 /* MarvelNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9B569B29B8954300F4FB18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB9B569D29B8954300F4FB18 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DB9B569F29B8954300F4FB18 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DB9B56A229B8954300F4FB18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DB9B56A429B8954500F4FB18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB9B56A729B8954500F4FB18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB9B56A929B8954500F4FB18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				883A6FE263355D276BC6F221 /* libPods-MarvelNetworking.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,8 @@
 			children = (
 				DB9B569A29B8954300F4FB18 /* MarvelNetworking */,
 				DB9B569929B8954300F4FB18 /* Products */,
+				FF707D3A142F5B7DEC351FE1 /* Pods */,
+				F49327F19D2A6E92F305545B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +61,56 @@
 		DB9B569A29B8954300F4FB18 /* MarvelNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				DB9B569B29B8954300F4FB18 /* AppDelegate.swift */,
-				DB9B569D29B8954300F4FB18 /* SceneDelegate.swift */,
-				DB9B569F29B8954300F4FB18 /* ViewController.swift */,
-				DB9B56A129B8954300F4FB18 /* Main.storyboard */,
+				DB9B56B029B897AF00F4FB18 /* Sources */,
+				DB9B56AF29B897A100F4FB18 /* Resources */,
+			);
+			path = MarvelNetworking;
+			sourceTree = "<group>";
+		};
+		DB9B56AF29B897A100F4FB18 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				DB9B56A429B8954500F4FB18 /* Assets.xcassets */,
 				DB9B56A629B8954500F4FB18 /* LaunchScreen.storyboard */,
 				DB9B56A929B8954500F4FB18 /* Info.plist */,
 			);
-			path = MarvelNetworking;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DB9B56B029B897AF00F4FB18 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DB9B56B129B897BB00F4FB18 /* App */,
+				DB9B569F29B8954300F4FB18 /* ViewController.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		DB9B56B129B897BB00F4FB18 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				DB9B569B29B8954300F4FB18 /* AppDelegate.swift */,
+				DB9B569D29B8954300F4FB18 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F49327F19D2A6E92F305545B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0CE7ABAC8909F7E3766F9AF1 /* libPods-MarvelNetworking.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF707D3A142F5B7DEC351FE1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				85B0E29495365E9207F418EC /* Pods-MarvelNetworking.debug.xcconfig */,
+				D05917CF7F1A5F88492F08F4 /* Pods-MarvelNetworking.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +120,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB9B56AC29B8954500F4FB18 /* Build configuration list for PBXNativeTarget "MarvelNetworking" */;
 			buildPhases = (
+				939986C00F9CE1519D8AA9A8 /* [CP] Check Pods Manifest.lock */,
 				DB9B569429B8954300F4FB18 /* Sources */,
 				DB9B569529B8954300F4FB18 /* Frameworks */,
 				DB9B569629B8954300F4FB18 /* Resources */,
@@ -127,11 +174,35 @@
 			files = (
 				DB9B56A829B8954500F4FB18 /* LaunchScreen.storyboard in Resources */,
 				DB9B56A529B8954500F4FB18 /* Assets.xcassets in Resources */,
-				DB9B56A329B8954300F4FB18 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		939986C00F9CE1519D8AA9A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MarvelNetworking-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DB9B569429B8954300F4FB18 /* Sources */ = {
@@ -147,14 +218,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DB9B56A129B8954300F4FB18 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DB9B56A229B8954300F4FB18 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DB9B56A629B8954500F4FB18 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,16 +345,16 @@
 		};
 		DB9B56AD29B8954500F4FB18 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85B0E29495365E9207F418EC /* Pods-MarvelNetworking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MarvelNetworking/Info.plist;
+				INFOPLIST_FILE = MarvelNetworking/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -309,16 +372,16 @@
 		};
 		DB9B56AE29B8954500F4FB18 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D05917CF7F1A5F88492F08F4 /* Pods-MarvelNetworking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MarvelNetworking/Info.plist;
+				INFOPLIST_FILE = MarvelNetworking/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
