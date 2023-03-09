@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		883A6FE263355D276BC6F221 /* libPods-MarvelNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CE7ABAC8909F7E3766F9AF1 /* libPods-MarvelNetworking.a */; };
+		DB35B4C029BA140A00BDDA33 /* MarvelTabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB35B4BF29BA140A00BDDA33 /* MarvelTabelView.swift */; };
+		DB35B4C229BA198C00BDDA33 /* MarvelTabelCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB35B4C129BA198C00BDDA33 /* MarvelTabelCellTableViewCell.swift */; };
 		DB9B569C29B8954300F4FB18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9B569B29B8954300F4FB18 /* AppDelegate.swift */; };
 		DB9B569E29B8954300F4FB18 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9B569D29B8954300F4FB18 /* SceneDelegate.swift */; };
-		DB9B56A029B8954300F4FB18 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9B569F29B8954300F4FB18 /* ViewController.swift */; };
+		DB9B56A029B8954300F4FB18 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9B569F29B8954300F4FB18 /* Model.swift */; };
 		DB9B56A529B8954500F4FB18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB9B56A429B8954500F4FB18 /* Assets.xcassets */; };
 		DB9B56A829B8954500F4FB18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB9B56A629B8954500F4FB18 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -19,10 +21,12 @@
 		0CE7ABAC8909F7E3766F9AF1 /* libPods-MarvelNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MarvelNetworking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B0E29495365E9207F418EC /* Pods-MarvelNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelNetworking.debug.xcconfig"; path = "Target Support Files/Pods-MarvelNetworking/Pods-MarvelNetworking.debug.xcconfig"; sourceTree = "<group>"; };
 		D05917CF7F1A5F88492F08F4 /* Pods-MarvelNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelNetworking.release.xcconfig"; path = "Target Support Files/Pods-MarvelNetworking/Pods-MarvelNetworking.release.xcconfig"; sourceTree = "<group>"; };
+		DB35B4BF29BA140A00BDDA33 /* MarvelTabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelTabelView.swift; sourceTree = "<group>"; };
+		DB35B4C129BA198C00BDDA33 /* MarvelTabelCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelTabelCellTableViewCell.swift; sourceTree = "<group>"; };
 		DB9B569829B8954300F4FB18 /* MarvelNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9B569B29B8954300F4FB18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB9B569D29B8954300F4FB18 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DB9B569F29B8954300F4FB18 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DB9B569F29B8954300F4FB18 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DB9B56A429B8954500F4FB18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB9B56A729B8954500F4FB18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB9B56A929B8954500F4FB18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,6 +44,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB35B4BB29BA10E000BDDA33 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				DB35B4BE29BA113600BDDA33 /* View */,
+				DB35B4BD29BA113200BDDA33 /* Presenter */,
+				DB35B4BC29BA112D00BDDA33 /* Model */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		DB35B4BC29BA112D00BDDA33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DB9B569F29B8954300F4FB18 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DB35B4BD29BA113200BDDA33 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		DB35B4BE29BA113600BDDA33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB35B4BF29BA140A00BDDA33 /* MarvelTabelView.swift */,
+				DB35B4C129BA198C00BDDA33 /* MarvelTabelCellTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		DB9B568F29B8954300F4FB18 = {
 			isa = PBXGroup;
 			children = (
@@ -80,8 +118,8 @@
 		DB9B56B029B897AF00F4FB18 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				DB35B4BB29BA10E000BDDA33 /* Scene */,
 				DB9B56B129B897BB00F4FB18 /* App */,
-				DB9B569F29B8954300F4FB18 /* ViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -109,7 +147,6 @@
 				85B0E29495365E9207F418EC /* Pods-MarvelNetworking.debug.xcconfig */,
 				D05917CF7F1A5F88492F08F4 /* Pods-MarvelNetworking.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -209,8 +246,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB9B56A029B8954300F4FB18 /* ViewController.swift in Sources */,
+				DB9B56A029B8954300F4FB18 /* Model.swift in Sources */,
+				DB35B4C229BA198C00BDDA33 /* MarvelTabelCellTableViewCell.swift in Sources */,
 				DB9B569C29B8954300F4FB18 /* AppDelegate.swift in Sources */,
+				DB35B4C029BA140A00BDDA33 /* MarvelTabelView.swift in Sources */,
 				DB9B569E29B8954300F4FB18 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
