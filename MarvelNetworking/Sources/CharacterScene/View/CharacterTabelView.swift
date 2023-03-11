@@ -7,19 +7,21 @@
 
 import UIKit
 
-class MarvelTabelView: UIViewController, UITableViewDelegate {
+class CharacterTabelView: UIViewController {
 
     //MARK: - Outlets
 
+    var presenter: CharacterPresenterProtocol?
+
     lazy var tabelView: UITableView = {
         let tabelView = UITableView(frame: .zero, style: .plain)
-        tabelView.register(MarvelTabelCell.self, forCellReuseIdentifier: MarvelTabelCell.identifier)
-        tabelView.backgroundColor = .black
+        tabelView.register(CharacterTabelCell.self, forCellReuseIdentifier: CharacterTabelCell.identifier)
         tabelView.dataSource = self
         tabelView.delegate = self
         tabelView.translatesAutoresizingMaskIntoConstraints = false
         return tabelView
     }()
+
 
     //: MARK: - Lifecycle
 
@@ -27,6 +29,7 @@ class MarvelTabelView: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         setupHierarchy()
         setupLayout()
+
     }
 
     //: MARK: - Setups
@@ -45,14 +48,27 @@ class MarvelTabelView: UIViewController, UITableViewDelegate {
     }
 }
 
-extension MarvelTabelView: UITableViewDataSource {
+extension CharacterTabelView: UITableViewDataSource, UITableViewDelegate {
+
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        25
+        return presenter?.characterData?.data?.results?.count ?? 0
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MarvelTabelCell.identifier, for: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { 
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTabelCell.identifier, for: indexPath) as? CharacterTabelCell else { return UITableViewCell() }
+        let marvelCharacter = presenter?.characterData?.data?.results?[indexPath.row]
+        cell.createCharacterCell(marvelCharacter)
         return cell
+    }
+}
+
+extension CharacterTabelView: CharacterViewProtocol {
+    func succes() {
+        tabelView.reloadData()
+    }
+
+    func failure(error: Error) {
+        print(error.localizedDescription)
     }
 }
