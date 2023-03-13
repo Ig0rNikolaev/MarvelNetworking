@@ -29,42 +29,31 @@ class CharacterTabelCell: UITableViewCell {
         return image
     }()
     
-    private var nameCharacterLabel: UILabel = {
+    private lazy var nameCharacterLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.numberOfLines = 2
-        label.font = UIFont.systemFont(ofSize: 15.5, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private var descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBlue
-        label.numberOfLines = 4
-        label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        label.numberOfLines = 5
+        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-
-    private lazy var moreButtonCharacter: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .red
-        button.setTitle("more..", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15.5, weight: .black)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
     }()
 
     private lazy var descriptionCharacterStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .equalSpacing
-        stack.spacing = 10
+        stack.spacing = 5
         stack.addArrangedSubview(nameCharacterLabel)
         stack.addArrangedSubview(descriptionLabel)
-        stack.addArrangedSubview(moreButtonCharacter)
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -75,7 +64,7 @@ class CharacterTabelCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupHierarchy()
         setupLayout()
-        contentView.backgroundColor = .white
+        backgroundColor()
     }
     
     required init?(coder: NSCoder) {
@@ -83,6 +72,17 @@ class CharacterTabelCell: UITableViewCell {
     }
     
     //MARK: - Setup
+
+    private func backgroundColor() {
+        contentView.backgroundColor = .white
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageСharacter.image = nil
+        nameCharacterLabel.text = nil
+        descriptionLabel.text = nil
+    }
     
     private func setupHierarchy() {
         imageСharacterСonteiner.addSubview(imageСharacter)
@@ -93,10 +93,11 @@ class CharacterTabelCell: UITableViewCell {
     func setupLayout() {
         NSLayoutConstraint.activate([
             imageСharacterСonteiner.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            imageСharacterСonteiner.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -200),
             imageСharacterСonteiner.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             imageСharacterСonteiner.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
-            
+            imageСharacterСonteiner.widthAnchor.constraint(equalToConstant: 155),
+            imageСharacterСonteiner.heightAnchor.constraint(equalToConstant: 155),
+
             imageСharacter.topAnchor.constraint(equalTo: imageСharacterСonteiner.topAnchor),
             imageСharacter.rightAnchor.constraint(equalTo: imageСharacterСonteiner.rightAnchor),
             imageСharacter.bottomAnchor.constraint(equalTo: imageСharacterСonteiner.bottomAnchor),
@@ -108,6 +109,9 @@ class CharacterTabelCell: UITableViewCell {
             descriptionCharacterStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
         ])
     }
+}
+
+extension CharacterTabelCell: CharacterLoadProtocol {
 
     func createCharacterCell(_ character: Character?) {
         let creatureImageURL = CreatureImageURL()

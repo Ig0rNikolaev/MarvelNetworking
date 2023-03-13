@@ -45,7 +45,8 @@ class CharacterTabelView: UIViewController {
         textField.placeholder = "SEARCH"
         textField.textAlignment = .center
         textField.textColor = .white
-        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? " ", attributes: [NSAttributedString.Key.foregroundColor : color])
+        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? " ",
+                                                             attributes: [NSAttributedString.Key.foregroundColor : color])
         textField.backgroundColor = .systemBlue
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -67,10 +68,14 @@ class CharacterTabelView: UIViewController {
         super.viewDidLoad()
         setupHierarchy()
         setupLayout()
-        view.backgroundColor = .white
+        backgroundColor()
     }
 
     //: MARK: - Setups
+
+    private func backgroundColor() {
+        view.backgroundColor = .white
+    }
 
     private func setupHierarchy() {
         imageMarvelСonteiner.addSubview(imageMarvel)
@@ -82,25 +87,25 @@ class CharacterTabelView: UIViewController {
 
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            imageMarvelСonteiner.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
-            imageMarvelСonteiner.rightAnchor.constraint(equalTo: view.rightAnchor),
-            imageMarvelСonteiner.leftAnchor.constraint(equalTo: view.leftAnchor),
+            imageMarvelСonteiner.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            imageMarvelСonteiner.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
+            imageMarvelСonteiner.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
             imageMarvelСonteiner.topAnchor.constraint(equalTo: imageMarvelСonteiner.bottomAnchor, constant: -100),
 
-            imageMarvel.topAnchor.constraint(equalTo: imageMarvelСonteiner.topAnchor, constant: 30),
-            imageMarvel.rightAnchor.constraint(equalTo: imageMarvelСonteiner.rightAnchor, constant: -10),
+            imageMarvel.topAnchor.constraint(equalTo: imageMarvelСonteiner.topAnchor),
+            imageMarvel.rightAnchor.constraint(equalTo: imageMarvelСonteiner.rightAnchor),
             imageMarvel.bottomAnchor.constraint(equalTo: imageMarvelСonteiner.bottomAnchor),
-            imageMarvel.leftAnchor.constraint(equalTo: imageMarvelСonteiner.leftAnchor, constant: 10),
+            imageMarvel.leftAnchor.constraint(equalTo: imageMarvelСonteiner.leftAnchor),
 
             searchCharacter.topAnchor.constraint(equalTo: imageMarvelСonteiner.bottomAnchor, constant: 10),
             searchCharacter.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
             searchCharacter.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
-            searchCharacter.topAnchor.constraint(equalTo: searchCharacter.bottomAnchor, constant: -30),
+            searchCharacter.topAnchor.constraint(equalTo: searchCharacter.bottomAnchor, constant: -39),
 
             searchButtonCharacter.topAnchor.constraint(equalTo: searchCharacter.bottomAnchor, constant: 10),
             searchButtonCharacter.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
             searchButtonCharacter.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
-            searchButtonCharacter.topAnchor.constraint(equalTo: searchButtonCharacter.bottomAnchor, constant: -39),
+            searchButtonCharacter.topAnchor.constraint(equalTo: searchButtonCharacter.bottomAnchor, constant: -49),
 
             tabelView.topAnchor.constraint(equalTo: searchButtonCharacter.bottomAnchor),
             tabelView.rightAnchor.constraint(equalTo: view.rightAnchor),
@@ -110,22 +115,35 @@ class CharacterTabelView: UIViewController {
     }
 }
 
-extension CharacterTabelView: UITableViewDataSource, UITableViewDelegate {
+extension CharacterTabelView: UITableViewDataSource {
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.characterData?.data?.results?.count ?? 0
+        return presenter?.charactersData?.data?.results?.count ?? 0
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTabelCell.identifier, for: indexPath) as? CharacterTabelCell else { return UITableViewCell() }
-        let marvelCharacter = presenter?.characterData?.data?.results?[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTabelCell.identifier,
+                                                       for: indexPath) as? CharacterTabelCell else { return UITableViewCell() }
+        let marvelCharacter = presenter?.charactersData?.data?.results?[indexPath.row]
         cell.createCharacterCell(marvelCharacter)
         return cell
     }
+}
+
+extension CharacterTabelView: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 175
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let character = presenter?.charactersData?.data?.results?[indexPath.row] else { return }
+        let detailCharacterView = Builder.createView(character: character)
+        if let sheet = detailCharacterView.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+        }
+        present(detailCharacterView, animated: true)
     }
 }
 
