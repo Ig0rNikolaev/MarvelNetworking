@@ -7,13 +7,17 @@
 
 import Foundation
 
+protocol CharacterLoadProtocol {
+    func createCharacterCell(_ character: Character?)
+}
+
 protocol CharacterViewProtocol {
     func succes()
     func failure(error: Error)
 }
 
 protocol CharacterPresenterProtocol {
-    var characterData: CharacterData? { get set }
+    var charactersData: CharacterData? { get set }
     init(view: CharacterViewProtocol, networkService: NetworkServiceProtocol)
     func getCharacter()
 }
@@ -23,7 +27,7 @@ class CharacterPresenter: CharacterPresenterProtocol {
     //MARK: - Outlets
     var networkService: NetworkServiceProtocol
     var characterView: CharacterViewProtocol?
-    var characterData: CharacterData?
+    var charactersData: CharacterData?
 
     //MARK: - Initializer
 
@@ -34,14 +38,14 @@ class CharacterPresenter: CharacterPresenterProtocol {
     }
 
     //MARK: - Setup
-
+    
     func getCharacter() {
         networkService.getData { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {
                 case .success(let characters):
-                    self.characterData = characters
+                    self.charactersData = characters
                     self.characterView?.succes()
                 case .failure(let error):
                     self.characterView?.failure(error: error)

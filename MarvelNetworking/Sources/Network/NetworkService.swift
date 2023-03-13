@@ -47,7 +47,11 @@ class CreatureURL: CreatureURLProtocol {
 class NetworkService: NetworkServiceProtocol {
     func getData(complition completion: @escaping (Result<CharacterData?, Error>) -> Void) {
         let urlMarvel = CreatureURL()
-        guard let url = urlMarvel.buildURL(scheme: "https", host: "gateway.marvel.com", path: "/v1/public/characters", offset: 0, limit: 100) else { return }
+        guard let url = urlMarvel.buildURL(scheme: "https",
+                                           host: "gateway.marvel.com",
+                                           path: "/v1/public/characters",
+                                           offset: 0,
+                                           limit: 100) else { return }
         DispatchQueue.main.async {
             AF.request(url).validate().responseDecodable(of: CharacterData.self) { response in
                 switch response.result {
