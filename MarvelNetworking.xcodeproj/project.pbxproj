@@ -72,14 +72,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		DB35B4BB29BA10E000BDDA33 /* CharacterScene */ = {
+		DB35B4BB29BA10E000BDDA33 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
 				DB35B4BE29BA113600BDDA33 /* View */,
 				DB35B4BD29BA113200BDDA33 /* Presenter */,
 				DB35B4BC29BA112D00BDDA33 /* Model */,
 			);
-			path = CharacterScene;
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		DB35B4BC29BA112D00BDDA33 /* Model */ = {
@@ -94,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				DB35B4C829BA561300BDDA33 /* CharacterPresenter.swift */,
+				DBE0F02329BF3C6100CD5C36 /* DetailPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -101,8 +102,9 @@
 		DB35B4BE29BA113600BDDA33 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DB35B4BF29BA140A00BDDA33 /* CharacterTabelView.swift */,
 				DB35B4C129BA198C00BDDA33 /* CharacterTabelCell.swift */,
+				DB35B4BF29BA140A00BDDA33 /* CharacterTabelView.swift */,
+				DBE0F02529BF486B00CD5C36 /* DetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,8 +157,7 @@
 		DB9B56B029B897AF00F4FB18 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				DBE0F02029BF3BF200CD5C36 /* DetailScene */,
-				DB35B4BB29BA10E000BDDA33 /* CharacterScene */,
+				DB35B4BB29BA10E000BDDA33 /* Scene */,
 				DB02F2AB29BC6053005375E1 /* Network */,
 				DB35B4C729BA474200BDDA33 /* Extensions */,
 				DB02F2AA29BC5CE7005375E1 /* Builder */,
@@ -172,31 +173,6 @@
 				DB9B569D29B8954300F4FB18 /* SceneDelegate.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		DBE0F02029BF3BF200CD5C36 /* DetailScene */ = {
-			isa = PBXGroup;
-			children = (
-				DBE0F02129BF3C1400CD5C36 /* View */,
-				DBE0F02229BF3C2200CD5C36 /* Presenter */,
-			);
-			path = DetailScene;
-			sourceTree = "<group>";
-		};
-		DBE0F02129BF3C1400CD5C36 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DBE0F02529BF486B00CD5C36 /* DetailView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		DBE0F02229BF3C2200CD5C36 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				DBE0F02329BF3C6100CD5C36 /* DetailPresenter.swift */,
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		F49327F19D2A6E92F305545B /* Frameworks */ = {

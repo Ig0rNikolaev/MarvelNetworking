@@ -5,7 +5,6 @@
 //  Created by Игорь Николаев on 09.03.2023.
 //
 
-import Foundation
 import Alamofire
 
 protocol CreatureURLProtocol {
@@ -42,13 +41,12 @@ class CreatureURL: CreatureURLProtocol {
         ]
         if name != nil {
             components.queryItems?.append(URLQueryItem(name: "nameStartsWith", value: name))
-                }
+        }
         return components.url
     }
 }
 
 class NetworkService: NetworkServiceProtocol {
-
     func getData(name: String?, complition completion: @escaping (Result<CharacterData?, Error>) -> Void) {
         let urlMarvel = CreatureURL()
         guard let url = urlMarvel.buildURL(scheme: "https",
@@ -56,17 +54,17 @@ class NetworkService: NetworkServiceProtocol {
                                            path: "/v1/public/characters",
                                            offset: 0,
                                            limit: 100, name: name) else { return }
-            AF.request(url).validate().responseDecodable(of: CharacterData.self) { response in
-                switch response.result {
-                case .success(let marvelCharacter):
-                    completion(.success(marvelCharacter))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
+        AF.request(url).validate().responseDecodable(of: CharacterData.self) { response in
+            switch response.result {
+            case .success(let marvelCharacter):
+                completion(.success(marvelCharacter))
+            case .failure(let error):
+                completion(.failure(error))
             }
-
         }
+
     }
+}
 
 class CreatureImageURL: CreatureImageURLProtocol {
     func getDataImageСharacter(urlRequest: String?, imageСharacter: UIImageView) {

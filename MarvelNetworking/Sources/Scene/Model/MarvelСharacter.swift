@@ -4,17 +4,16 @@
 //
 //  Created by Игорь Николаев on 08.03.2023.
 //
-import Foundation
 
-struct CharacterData: Codable {
+struct CharacterData: Decodable {
     var data: CharacterStorage?
 }
 
-struct CharacterStorage: Codable {
+struct CharacterStorage: Decodable {
     var results: [Character]?
 }
 
-struct Character: Codable {
+struct Character: Decodable {
     let name: String?
     let description: String?
     let thumbnail: Image?
@@ -22,7 +21,7 @@ struct Character: Codable {
     let comics: ComicList?
 }
 
-struct Image: Codable {
+struct Image: Decodable {
     let path: String?
     let imageExtension: String?
 
@@ -30,7 +29,7 @@ struct Image: Codable {
         case path = "path"
         case imageExtension = "extension"
     }
-
+    
     var url: String {
         if let path = path, let imageExt = imageExtension {
             return path + "/standard_fantastic." + imageExt
@@ -39,12 +38,11 @@ struct Image: Codable {
     }
 }
 
-struct ComicList: Codable {
+struct ComicList: Decodable {
     let items: [ComicSummary]?
 }
 
-struct ComicSummary: Codable {
+struct ComicSummary: Decodable {
     let resourceURI: String?
     let name: String?
 }
-

@@ -5,15 +5,14 @@
 //  Created by Игорь Николаев on 13.03.2023.
 //
 
-import Foundation
 import UIKit
 
 class DetailCharacterView: UIViewController {
-
+    
     var presenter: DetailPresenter?
-
+    
     //MARK: - Outlets
-
+    
     private lazy var imageDetailMarvel: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "Marvel")
@@ -22,7 +21,7 @@ class DetailCharacterView: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-
+    
     private lazy var nameDetailCharacter: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -31,7 +30,7 @@ class DetailCharacterView: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private lazy var imageDetailCharacter: UIImageView = {
         var image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -39,7 +38,7 @@ class DetailCharacterView: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-
+    
     private lazy var descriptionDetailLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBlue
@@ -48,7 +47,7 @@ class DetailCharacterView: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private lazy var comixDetailLabel: UILabel = {
         let label = UILabel()
         label.textColor = .red
@@ -57,9 +56,9 @@ class DetailCharacterView: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     //: MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setDetail()
@@ -67,48 +66,47 @@ class DetailCharacterView: UIViewController {
         setupLayout()
         backgroundColor()
     }
-
+    
     //: MARK: - Setups
-
+    
     private func setDetail() {
         presenter?.setDetailCharacter()
     }
-
+    
     private func backgroundColor() {
         view.backgroundColor = .white
     }
-
+    
     private func setupHierarchy() {
         view.addSubview(imageDetailMarvel)
         view.addSubview(nameDetailCharacter)
         view.addSubview(imageDetailCharacter)
         view.addSubview(descriptionDetailLabel)
         view.addSubview(comixDetailLabel)
-
     }
-
+    
     private func setupLayout() {
         NSLayoutConstraint.activate([
             imageDetailMarvel.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
             imageDetailMarvel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
             imageDetailMarvel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
             imageDetailMarvel.topAnchor.constraint(equalTo: imageDetailMarvel.bottomAnchor, constant: -100),
-
+            
             nameDetailCharacter.topAnchor.constraint(equalTo: imageDetailMarvel.bottomAnchor, constant: 10),
             nameDetailCharacter.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
             nameDetailCharacter.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
             nameDetailCharacter.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
+            
             imageDetailCharacter.topAnchor.constraint(equalTo: nameDetailCharacter.bottomAnchor, constant: 10),
             imageDetailCharacter.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
             imageDetailCharacter.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
             imageDetailCharacter.topAnchor.constraint(equalTo: imageDetailCharacter.bottomAnchor, constant: -400),
-
+            
             descriptionDetailLabel.topAnchor.constraint(equalTo: imageDetailCharacter.bottomAnchor, constant: 10),
             descriptionDetailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
             descriptionDetailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
             descriptionDetailLabel.bottomAnchor.constraint(equalTo: comixDetailLabel.topAnchor, constant: -10),
-
+            
             comixDetailLabel.topAnchor.constraint(equalTo: descriptionDetailLabel.bottomAnchor, constant: 10),
             comixDetailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
             comixDetailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
@@ -130,4 +128,3 @@ extension DetailCharacterView: DetailViewProtocol {
         }
     }
 }
-    
