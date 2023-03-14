@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import Alamofire
 
 class CharacterTabelView: UIViewController {
-
+    
     //MARK: - Outlets
-
+    
     var presenter: CharacterPresenterProtocol?
-
+    
     lazy var tabelView: UITableView = {
         let tabelView = UITableView(frame: .zero, style: .plain)
         tabelView.register(CharacterTabelCell.self, forCellReuseIdentifier: CharacterTabelCell.identifier)
@@ -22,7 +23,7 @@ class CharacterTabelView: UIViewController {
         tabelView.translatesAutoresizingMaskIntoConstraints = false
         return tabelView
     }()
-
+    
     private lazy var imageMarvel: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "Marvel")
@@ -31,47 +32,61 @@ class CharacterTabelView: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-
+    
     private lazy var imageMarvelСonteiner: UIView = {
         let image = UIImageView()
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-
+    
     private lazy var searchCharacter: UITextField = {
         let textField = UITextField()
-        let color = UIColor.white
-        textField.placeholder = "SEARCH"
         textField.textAlignment = .center
         textField.textColor = .white
-        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? " ",
-                                                             attributes: [NSAttributedString.Key.foregroundColor : color])
         textField.backgroundColor = .systemBlue
+        textField.setupLeftImage(imageName: "magnifyingglass")
+        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? "SEARCH...",
+                                                             attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-
+    
     private lazy var searchButtonCharacter: UIButton = {
         let button = UIButton()
         button.backgroundColor = .red
         button.setTitle("CHOOSE YOUR SUPERHERO", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15.5, weight: .heavy)
+        button.addTarget(self, action: #selector(search), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
-
+    
+    
     //: MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupHierarchy()
         setupLayout()
         backgroundColor()
     }
-
+    
     //: MARK: - Setups
+    
+    @objc private func search() {
+      let networkService = NetworkService()
+        networkService.getData(name: searchCharacter.text) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let characters):
+                    self.presenter?.charactersData = characters
+                    self.presenter?.characterView?.succes()
+                case .failure(let error):
+                    self.presenter?.characterView?.failure(error: error)
+            }
+        }
+    }
 
     private func backgroundColor() {
         view.backgroundColor = .white
