@@ -62,13 +62,17 @@ class DetailCharacterView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.setDetailCharacter()
+        setDetail()
         setupHierarchy()
         setupLayout()
         backgroundColor()
     }
 
     //: MARK: - Setups
+
+    private func setDetail() {
+        presenter?.setDetailCharacter()
+    }
 
     private func backgroundColor() {
         view.backgroundColor = .white
@@ -80,6 +84,7 @@ class DetailCharacterView: UIViewController {
         view.addSubview(imageDetailCharacter)
         view.addSubview(descriptionDetailLabel)
         view.addSubview(comixDetailLabel)
+
     }
 
     private func setupLayout() {
@@ -88,7 +93,7 @@ class DetailCharacterView: UIViewController {
             imageDetailMarvel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
             imageDetailMarvel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
             imageDetailMarvel.topAnchor.constraint(equalTo: imageDetailMarvel.bottomAnchor, constant: -100),
-            
+
             nameDetailCharacter.topAnchor.constraint(equalTo: imageDetailMarvel.bottomAnchor, constant: 10),
             nameDetailCharacter.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
             nameDetailCharacter.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
@@ -102,6 +107,11 @@ class DetailCharacterView: UIViewController {
             descriptionDetailLabel.topAnchor.constraint(equalTo: imageDetailCharacter.bottomAnchor, constant: 10),
             descriptionDetailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
             descriptionDetailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
+            descriptionDetailLabel.bottomAnchor.constraint(equalTo: comixDetailLabel.topAnchor, constant: -10),
+
+            comixDetailLabel.topAnchor.constraint(equalTo: descriptionDetailLabel.bottomAnchor, constant: 10),
+            comixDetailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
+            comixDetailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
         ])
     }
 }
@@ -112,5 +122,12 @@ extension DetailCharacterView: DetailViewProtocol {
         nameDetailCharacter.text = character?.name ?? " "
         descriptionDetailLabel.text = character?.description ?? " "
         creatureImageURL.getDataImageСharacter(urlRequest: character?.thumbnail?.url, imageСharacter: imageDetailCharacter)
+        if let character = character {
+            if let comics = character.comics?.items {
+                let comicNames = comics.compactMap { $0.name }.joined(separator: ", ")
+                comixDetailLabel.text = comicNames
+            }
+        }
     }
 }
+    

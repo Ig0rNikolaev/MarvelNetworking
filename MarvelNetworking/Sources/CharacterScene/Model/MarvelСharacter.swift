@@ -19,6 +19,7 @@ struct Character: Codable {
     let description: String?
     let thumbnail: Image?
     let resourceURI: String?
+    let comics: ComicList?
 }
 
 struct Image: Codable {
@@ -37,3 +38,13 @@ struct Image: Codable {
         return ""
     }
 }
+
+struct ComicList: Codable {
+    let items: [ComicSummary]?
+}
+
+struct ComicSummary: Codable {
+    let resourceURI: String?
+    let name: String?
+}
+

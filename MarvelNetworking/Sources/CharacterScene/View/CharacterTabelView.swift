@@ -75,17 +75,31 @@ class CharacterTabelView: UIViewController {
     //: MARK: - Setups
     
     @objc private func search() {
-      let networkService = NetworkService()
+        let networkService = NetworkService()
         networkService.getData(name: searchCharacter.text) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let characters):
+            guard let self = self else { return }
+            switch result {
+            case .success(let characters):
+                if let results = characters?.data?.results, results.contains(where: { $0.name?.range(of: self.searchCharacter.text ?? " ") != nil }) {
                     self.presenter?.charactersData = characters
                     self.presenter?.characterView?.succes()
-                case .failure(let error):
-                    self.presenter?.characterView?.failure(error: error)
+                } else {
+                    self.showAllert()
+                }
+            case .failure(let error):
+                self.presenter?.characterView?.failure(error: error)
             }
         }
+    }
+
+    func showAllert() {
+        let alert = UIAlertController(title: "Персонаж не найден",
+                                      message: "Персонаж не существует во вселенной Marvel",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ОК", style: .destructive, handler:  { event in
+            self.searchCharacter.text = ""
+        }))
+        self.present(alert, animated: true)
     }
 
     private func backgroundColor() {
