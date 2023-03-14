@@ -145,8 +145,7 @@ class CharacterTabelView: UIViewController {
 }
 
 extension CharacterTabelView: UITableViewDataSource {
-
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.charactersData?.data?.results?.count ?? 0
     }
@@ -177,6 +176,7 @@ extension CharacterTabelView: UITableViewDelegate {
 }
 
 extension CharacterTabelView: CharacterViewProtocol {
+
     func succes() {
         tabelView.reloadData()
     }

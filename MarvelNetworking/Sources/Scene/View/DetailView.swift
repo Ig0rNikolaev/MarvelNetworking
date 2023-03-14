@@ -56,7 +56,13 @@ class DetailCharacterView: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
     //: MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -78,38 +84,45 @@ class DetailCharacterView: UIViewController {
     }
     
     private func setupHierarchy() {
-        view.addSubview(imageDetailMarvel)
-        view.addSubview(nameDetailCharacter)
-        view.addSubview(imageDetailCharacter)
-        view.addSubview(descriptionDetailLabel)
-        view.addSubview(comixDetailLabel)
+        view.addSubview(scrollView)
+        scrollView.addSubview(imageDetailMarvel)
+        scrollView.addSubview(nameDetailCharacter)
+        scrollView.addSubview(imageDetailCharacter)
+        scrollView.addSubview(descriptionDetailLabel)
+        scrollView.addSubview(comixDetailLabel)
     }
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            imageDetailMarvel.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            imageDetailMarvel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
-            imageDetailMarvel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+            imageDetailMarvel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
+            imageDetailMarvel.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -10),
+            imageDetailMarvel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 10),
             imageDetailMarvel.topAnchor.constraint(equalTo: imageDetailMarvel.bottomAnchor, constant: -100),
-            
+
             nameDetailCharacter.topAnchor.constraint(equalTo: imageDetailMarvel.bottomAnchor, constant: 10),
-            nameDetailCharacter.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
-            nameDetailCharacter.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
-            nameDetailCharacter.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
+            nameDetailCharacter.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 10),
+            nameDetailCharacter.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -10),
+            nameDetailCharacter.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+
             imageDetailCharacter.topAnchor.constraint(equalTo: nameDetailCharacter.bottomAnchor, constant: 10),
-            imageDetailCharacter.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
-            imageDetailCharacter.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
+            imageDetailCharacter.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -10),
+            imageDetailCharacter.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 10),
             imageDetailCharacter.topAnchor.constraint(equalTo: imageDetailCharacter.bottomAnchor, constant: -400),
-            
+
             descriptionDetailLabel.topAnchor.constraint(equalTo: imageDetailCharacter.bottomAnchor, constant: 10),
-            descriptionDetailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
-            descriptionDetailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
+            descriptionDetailLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -10),
+            descriptionDetailLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 10),
             descriptionDetailLabel.bottomAnchor.constraint(equalTo: comixDetailLabel.topAnchor, constant: -10),
-            
+
             comixDetailLabel.topAnchor.constraint(equalTo: descriptionDetailLabel.bottomAnchor, constant: 10),
-            comixDetailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
-            comixDetailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
+            comixDetailLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -10),
+            comixDetailLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 10),
+            comixDetailLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -10),
         ])
     }
 }
