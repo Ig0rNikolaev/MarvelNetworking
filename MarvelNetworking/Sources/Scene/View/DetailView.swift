@@ -80,7 +80,7 @@ class DetailCharacterView: UIViewController {
     }
     
     private func backgroundColor() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
     }
     
     private func setupHierarchy() {

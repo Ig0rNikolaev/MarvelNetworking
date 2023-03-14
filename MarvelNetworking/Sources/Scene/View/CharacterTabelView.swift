@@ -17,7 +17,7 @@ class CharacterTabelView: UIViewController {
     lazy var tabelView: UITableView = {
         let tabelView = UITableView(frame: .zero, style: .plain)
         tabelView.register(CharacterTabelCell.self, forCellReuseIdentifier: CharacterTabelCell.identifier)
-        tabelView.backgroundColor = .white
+        tabelView.backgroundColor = .systemGray6
         tabelView.dataSource = self
         tabelView.delegate = self
         tabelView.translatesAutoresizingMaskIntoConstraints = false
@@ -43,11 +43,12 @@ class CharacterTabelView: UIViewController {
     private lazy var searchCharacter: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
-        textField.textColor = .white
-        textField.backgroundColor = .systemBlue
+        textField.textColor = .systemBlue
+        textField.layer.cornerRadius = 5
+        textField.backgroundColor = .white
         textField.setupLeftImage(imageName: "magnifyingglass")
         textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? "SEARCH...",
-                                                             attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+                                                             attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -55,6 +56,8 @@ class CharacterTabelView: UIViewController {
     private lazy var searchButtonCharacter: UIButton = {
         let button = UIButton()
         button.backgroundColor = .red
+        button.layer.cornerRadius = 5
+        button.shadowButton()
         button.setTitle("CHOOSE YOUR SUPERHERO", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15.5, weight: .heavy)
         button.addTarget(self, action: #selector(search), for: .touchUpInside)
@@ -103,7 +106,7 @@ class CharacterTabelView: UIViewController {
     }
 
     private func backgroundColor() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
     }
 
     private func setupHierarchy() {

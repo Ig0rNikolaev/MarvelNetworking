@@ -74,7 +74,7 @@ class CharacterTabelCell: UITableViewCell {
     //MARK: - Setup
 
     private func backgroundColor() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .systemGray6
     }
 
     override func prepareForReuse() {
