@@ -5,8 +5,6 @@
 //  Created by Игорь Николаев on 09.03.2023.
 //
 
-import Foundation
-
 protocol CharacterLoadProtocol {
     func createCharacterCell(_ character: Character?)
 }
@@ -26,6 +24,7 @@ protocol CharacterPresenterProtocol {
 class CharacterPresenter: CharacterPresenterProtocol {
 
     //MARK: - Outlets
+
     var networkService: NetworkServiceProtocol
     var characterView: CharacterViewProtocol?
     var charactersData: CharacterData?

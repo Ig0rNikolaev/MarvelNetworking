@@ -5,8 +5,6 @@
 //  Created by Игорь Николаев on 13.03.2023.
 //
 
-import Foundation
-
 protocol DetailViewProtocol {
     func setDetailCharacter(_ character: Character?)
 }
@@ -17,7 +15,6 @@ protocol DetailPresenterProtocol {
 }
 
 class DetailPresenter: DetailPresenterProtocol {
-    
     var networkService: NetworkServiceProtocol
     var view: DetailViewProtocol?
     var character: Character?
