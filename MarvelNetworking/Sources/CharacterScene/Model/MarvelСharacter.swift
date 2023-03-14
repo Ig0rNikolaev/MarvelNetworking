@@ -32,7 +32,7 @@ struct Image: Codable {
 
     var url: String {
         if let path = path, let imageExt = imageExtension {
-            return path + "." + imageExt
+            return path + "/standard_fantastic." + imageExt
         }
         return ""
     }

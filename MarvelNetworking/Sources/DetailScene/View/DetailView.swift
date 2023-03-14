@@ -26,6 +26,7 @@ class DetailCharacterView: UIViewController {
     private lazy var nameDetailCharacter: UILabel = {
         let label = UILabel()
         label.textColor = .black
+        label.numberOfLines = 2
         label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -89,6 +90,8 @@ class DetailCharacterView: UIViewController {
             imageDetailMarvel.topAnchor.constraint(equalTo: imageDetailMarvel.bottomAnchor, constant: -100),
             
             nameDetailCharacter.topAnchor.constraint(equalTo: imageDetailMarvel.bottomAnchor, constant: 10),
+            nameDetailCharacter.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
+            nameDetailCharacter.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
             nameDetailCharacter.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
             imageDetailCharacter.topAnchor.constraint(equalTo: nameDetailCharacter.bottomAnchor, constant: 10),

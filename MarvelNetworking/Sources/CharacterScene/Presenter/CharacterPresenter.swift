@@ -18,6 +18,7 @@ protocol CharacterViewProtocol {
 
 protocol CharacterPresenterProtocol {
     var charactersData: CharacterData? { get set }
+    var characterView: CharacterViewProtocol? { get set }
     init(view: CharacterViewProtocol, networkService: NetworkServiceProtocol)
     func getCharacter()
 }
@@ -40,8 +41,7 @@ class CharacterPresenter: CharacterPresenterProtocol {
     //MARK: - Setup
     
     func getCharacter() {
-        networkService.getData { [weak self] result in
-            DispatchQueue.main.async {
+        networkService.getData(name: nil) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let characters):
@@ -49,7 +49,6 @@ class CharacterPresenter: CharacterPresenterProtocol {
                     self.characterView?.succes()
                 case .failure(let error):
                     self.characterView?.failure(error: error)
-                }
             }
         }
     }
