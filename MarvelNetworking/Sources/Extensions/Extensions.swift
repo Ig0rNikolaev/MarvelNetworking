@@ -11,14 +11,16 @@ import UIKit
 //: MARK: - String
 
 extension String {
+
    static func md5(_ source: String) -> String {
-        return Insecure.MD5.hash(data: source.data(using: .utf8)!).map { String(format: "%02hhx", $0) }.joined()
+        return Insecure.MD5.hash(data: source.data(using: .utf8) ?? Data()).map { String(format: "%02hhx", $0) }.joined()
     }
 }
 
 //: MARK: - UITextField
 
 extension UITextField {
+    
     func setupLeftImage(imageName: String){
         let imageView = UIImageView(frame: CGRect(x: 10, y: 0, width: 20, height: 20))
         imageView.image = UIImage(systemName: imageName)
