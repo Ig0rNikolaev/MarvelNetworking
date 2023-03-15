@@ -65,7 +65,6 @@ class CharacterTabelView: UIViewController {
         return button
     }()
     
-    
     //: MARK: - Lifecycle
     
     override func viewDidLoad() {
