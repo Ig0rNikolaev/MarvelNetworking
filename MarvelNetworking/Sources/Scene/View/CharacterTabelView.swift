@@ -64,6 +64,14 @@ final class CharacterTabelView: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
+    private lazy var indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.color = .systemRed
+        indicator.style = .large
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
     
     //: MARK: - Lifecycle
     
@@ -107,6 +115,7 @@ final class CharacterTabelView: UIViewController {
 
     private func backgroundColor() {
         view.backgroundColor = .systemGray6
+        indicator.startAnimating()
     }
 
     private func setupHierarchy() {
@@ -115,6 +124,7 @@ final class CharacterTabelView: UIViewController {
         view.addSubview(searchCharacter)
         view.addSubview(searchButtonCharacter)
         view.addSubview(tabelView)
+        tabelView.addSubview(indicator)
     }
 
     private func setupLayout() {
@@ -142,7 +152,10 @@ final class CharacterTabelView: UIViewController {
             tabelView.topAnchor.constraint(equalTo: searchButtonCharacter.bottomAnchor),
             tabelView.rightAnchor.constraint(equalTo: view.rightAnchor),
             tabelView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tabelView.leftAnchor.constraint(equalTo: view.leftAnchor)
+            tabelView.leftAnchor.constraint(equalTo: view.leftAnchor),
+
+            indicator.centerXAnchor.constraint(equalTo: tabelView.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: tabelView.centerYAnchor),
         ])
     }
 }
@@ -158,6 +171,7 @@ extension CharacterTabelView: UITableViewDataSource {
                                                        for: indexPath) as? CharacterTabelCell else { return UITableViewCell() }
         let marvelCharacter = presenter?.charactersData?.data?.results?[indexPath.row]
         cell.createCharacterCell(marvelCharacter)
+        indicator.stopAnimating()
         return cell
     }
 }
