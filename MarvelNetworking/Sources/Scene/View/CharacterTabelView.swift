@@ -83,7 +83,8 @@ class CharacterTabelView: UIViewController {
             guard let self = self else { return }
             switch result {
             case .success(let characters):
-                if let results = characters?.data?.results, results.contains(where: { $0.name?.range(of: self.searchCharacter.text ?? " ") != nil }) {
+                if let results = characters?.data?.results, results.contains(where: { $0.name?.range(of: self.searchCharacter.text ?? " ",
+                                                                                                     options: .caseInsensitive) != nil }) {
                     self.presenter?.charactersData = characters
                     self.presenter?.characterView?.succes()
                 } else {
