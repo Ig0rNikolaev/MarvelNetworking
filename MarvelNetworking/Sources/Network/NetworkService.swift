@@ -19,7 +19,7 @@ protocol NetworkServiceProtocol {
     func getData(name: String?, complition: @escaping (Result<CharacterData?, Error>) -> Void)
 }
 
-class CreatureURL: CreatureURLProtocol {
+final class CreatureURL: CreatureURLProtocol {
     func buildURL(scheme: String, host: String, path: String, offset: Int, limit: Int, name: String?) -> URL? {
 
         let publicKey = "8ff288aa4d9bd9b25d051aea9585e041"
@@ -46,7 +46,7 @@ class CreatureURL: CreatureURLProtocol {
     }
 }
 
-class NetworkService: NetworkServiceProtocol {
+final class NetworkService: NetworkServiceProtocol {
     func getData(name: String?, complition completion: @escaping (Result<CharacterData?, Error>) -> Void) {
         let urlMarvel = CreatureURL()
         guard let url = urlMarvel.buildURL(scheme: "https",
@@ -66,7 +66,7 @@ class NetworkService: NetworkServiceProtocol {
     }
 }
 
-class CreatureImageURL: CreatureImageURLProtocol {
+final class CreatureImageURL: CreatureImageURLProtocol {
     func getDataImageСharacter(urlRequest: String?, imageСharacter: UIImageView) {
         guard let url = URL(string: urlRequest ?? " ") else { return }
         AF.request(url).response { response in

@@ -14,7 +14,7 @@ protocol DetailPresenterProtocol {
     func setDetailCharacter()
 }
 
-class DetailPresenter: DetailPresenterProtocol {
+final class DetailPresenter: DetailPresenterProtocol {
     var networkService: NetworkServiceProtocol
     var view: DetailViewProtocol?
     var character: Character?

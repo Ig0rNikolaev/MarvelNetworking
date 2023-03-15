@@ -12,7 +12,7 @@ protocol BuilderProtocol {
     static func createView(character: Character) -> UIViewController
 }
 
-class Builder: BuilderProtocol {
+final class Builder: BuilderProtocol {
     static func createView() -> UIViewController {
         let view = CharacterTabelView()
         let networkService = NetworkService()

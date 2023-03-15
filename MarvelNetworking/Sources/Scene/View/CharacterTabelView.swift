@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class CharacterTabelView: UIViewController {
+final class CharacterTabelView: UIViewController {
     
     //MARK: - Outlets
     
@@ -179,7 +179,6 @@ extension CharacterTabelView: UITableViewDelegate {
 }
 
 extension CharacterTabelView: CharacterViewProtocol {
-
     func succes() {
         tabelView.reloadData()
     }

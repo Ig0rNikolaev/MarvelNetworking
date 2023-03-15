@@ -21,7 +21,7 @@ protocol CharacterPresenterProtocol {
     func getCharacter()
 }
 
-class CharacterPresenter: CharacterPresenterProtocol {
+final class CharacterPresenter: CharacterPresenterProtocol {
 
     //MARK: - Outlets
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailCharacterView: UIViewController {
+final class DetailCharacterView: UIViewController {
     
     var presenter: DetailPresenter?
     

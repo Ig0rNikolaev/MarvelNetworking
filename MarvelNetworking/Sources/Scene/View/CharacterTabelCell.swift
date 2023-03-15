@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CharacterTabelCell: UITableViewCell {
+final class CharacterTabelCell: UITableViewCell {
     
     static let identifier = "CharacterTabelCell"
     
@@ -112,7 +112,6 @@ class CharacterTabelCell: UITableViewCell {
 }
 
 extension CharacterTabelCell: CharacterLoadProtocol {
-
     func createCharacterCell(_ character: Character?) {
         let creatureImageURL = CreatureImageURL()
         nameCharacterLabel.text = character?.name ?? " "
