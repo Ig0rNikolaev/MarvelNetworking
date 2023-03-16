@@ -82,9 +82,9 @@
 		DB35B4BB29BA10E000BDDA33 /* SceneCharacter */ = {
 			isa = PBXGroup;
 			children = (
+				DB35B4BC29BA112D00BDDA33 /* Model */,
 				DB35B4BE29BA113600BDDA33 /* View */,
 				DB35B4BD29BA113200BDDA33 /* Presenter */,
-				DB35B4BC29BA112D00BDDA33 /* Model */,
 			);
 			path = SceneCharacter;
 			sourceTree = "<group>";

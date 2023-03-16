@@ -45,6 +45,8 @@ final class CharacterTabelView: UIViewController {
         textField.textAlignment = .center
         textField.textColor = .systemBlue
         textField.layer.cornerRadius = 5
+        textField.delegate = self
+        textField.returnKeyType = .search
         textField.backgroundColor = .white
         textField.setupLeftImage(imageName: "magnifyingglass")
         textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? "SEARCH...",
@@ -201,3 +203,16 @@ extension CharacterTabelView: CharacterViewProtocol {
         print(error.localizedDescription)
     }
 }
+
+extension CharacterTabelView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchCharacter.resignFirstResponder()
+        search()
+        return true
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+            searchCharacter.resignFirstResponder()
+        }
+}
+
