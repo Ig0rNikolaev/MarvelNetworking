@@ -72,7 +72,7 @@ final class CharacterTabelView: UIViewController {
         indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator
     }()
-    
+
     //: MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -83,7 +83,7 @@ final class CharacterTabelView: UIViewController {
     }
     
     //: MARK: - Setups
-    
+
     @objc private func search() {
         let networkService = NetworkService()
         networkService.getData(name: searchCharacter.text) { [weak self] result in
@@ -184,9 +184,9 @@ extension CharacterTabelView: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let character = presenter?.charactersData?.data?.results?[indexPath.row] else { return }
-        let detailCharacterView = Builder.createView(character: character)
+        let detailCharacterView = BuilderDetail.build(character: character)
         if let sheet = detailCharacterView.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
+            sheet.detents = [.large()]
         }
         present(detailCharacterView, animated: true)
     }
