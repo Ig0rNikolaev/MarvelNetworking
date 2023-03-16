@@ -194,6 +194,18 @@ extension CharacterTabelView: UITableViewDelegate {
     }
 }
 
+extension CharacterTabelView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchCharacter.resignFirstResponder()
+        search()
+        return true
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchCharacter.resignFirstResponder()
+    }
+}
+
 extension CharacterTabelView: CharacterViewProtocol {
     func succes() {
         tabelView.reloadData()
@@ -203,16 +215,3 @@ extension CharacterTabelView: CharacterViewProtocol {
         print(error.localizedDescription)
     }
 }
-
-extension CharacterTabelView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchCharacter.resignFirstResponder()
-        search()
-        return true
-    }
-
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-            searchCharacter.resignFirstResponder()
-        }
-}
-
