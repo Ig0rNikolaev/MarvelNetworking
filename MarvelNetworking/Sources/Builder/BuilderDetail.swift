@@ -11,7 +11,7 @@ final class BuilderDetail {
     static func build(character: Character) -> UIViewController {
         let view = DetailCharacterView()
         let networkService = NetworkService()
-        let presenter = DetailPresenter(view: view, networkServise: networkService, character: character)
+        let presenter = DetailPresenter(view: view, networkService: networkService, character: character)
         view.presenter = presenter
         return view
     }

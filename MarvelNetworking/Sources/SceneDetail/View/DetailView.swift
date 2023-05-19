@@ -71,6 +71,8 @@ final class DetailCharacterView: UIViewController {
         setupHierarchy()
         setupLayout()
         backgroundColor()
+
+        NotificationCenter.default.removeObserver(self)
     }
     
     //: MARK: - Setups
@@ -91,7 +93,7 @@ final class DetailCharacterView: UIViewController {
         scrollView.addSubview(descriptionDetailLabel)
         scrollView.addSubview(comixDetailLabel)
     }
-    
+
     private func setupLayout() {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -133,11 +135,8 @@ extension DetailCharacterView: DetailViewProtocol {
         nameDetailCharacter.text = character?.name ?? " "
         descriptionDetailLabel.text = character?.description ?? " "
         creatureImageURL.getDataImageСharacter(urlRequest: character?.thumbnail?.url, imageСharacter: imageDetailCharacter)
-        if let character = character {
-            if let comics = character.comics?.items {
-                let comicNames = comics.compactMap { $0.name }.joined(separator: ", ")
-                comixDetailLabel.text = comicNames
-            }
-        }
+        guard let comics = character?.comics?.items else { return comixDetailLabel.text = ""}
+        let comicNames = comics.compactMap { $0.name }.joined(separator: ", ")
+        comixDetailLabel.text = comicNames
     }
 }
