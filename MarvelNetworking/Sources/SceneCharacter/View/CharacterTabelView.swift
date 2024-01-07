@@ -46,6 +46,7 @@ final class CharacterTabelView: UIViewController {
         textField.textColor = .systemBlue
         textField.layer.cornerRadius = 5
         textField.delegate = self
+        textField.borderStyle = .roundedRect
         textField.returnKeyType = .search
         textField.backgroundColor = .white
         textField.setupLeftImage(imageName: "magnifyingglass")
