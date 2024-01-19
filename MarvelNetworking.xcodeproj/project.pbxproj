@@ -19,6 +19,7 @@
 		DB9B56A029B8954300F4FB18 /* MarvelСharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9B569F29B8954300F4FB18 /* MarvelСharacter.swift */; };
 		DB9B56A529B8954500F4FB18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB9B56A429B8954500F4FB18 /* Assets.xcassets */; };
 		DB9B56A829B8954500F4FB18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB9B56A629B8954500F4FB18 /* LaunchScreen.storyboard */; };
+		DBBEC1092B5B0F95002A2406 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBEC1082B5B0F95002A2406 /* UIView+Extension.swift */; };
 		DBD6533129C33FA400D67DE3 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD6533029C33FA400D67DE3 /* UITextField+Extension.swift */; };
 		DBD6533329C33FAC00D67DE3 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD6533229C33FAC00D67DE3 /* UIButton+Extension.swift */; };
 		DBD6533529C3405E00D67DE3 /* BuilderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD6533429C3405E00D67DE3 /* BuilderDetail.swift */; };
@@ -43,6 +44,7 @@
 		DB9B56A429B8954500F4FB18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB9B56A729B8954500F4FB18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB9B56A929B8954500F4FB18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBBEC1082B5B0F95002A2406 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		DBD6533029C33FA400D67DE3 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		DBD6533229C33FAC00D67DE3 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		DBD6533429C3405E00D67DE3 /* BuilderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderDetail.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				DB35B4C529BA46FB00BDDA33 /* String+Extension.swift */,
 				DBD6533029C33FA400D67DE3 /* UITextField+Extension.swift */,
 				DBD6533229C33FAC00D67DE3 /* UIButton+Extension.swift */,
+				DBBEC1082B5B0F95002A2406 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				DB9B56A029B8954300F4FB18 /* MarvelСharacter.swift in Sources */,
 				DB35B4C229BA198C00BDDA33 /* CharacterTabelCell.swift in Sources */,
 				DB9B569C29B8954300F4FB18 /* AppDelegate.swift in Sources */,
+				DBBEC1092B5B0F95002A2406 /* UIView+Extension.swift in Sources */,
 				DBD6533329C33FAC00D67DE3 /* UIButton+Extension.swift in Sources */,
 				DB35B4C029BA140A00BDDA33 /* CharacterTabelView.swift in Sources */,
 				DB35B4C429BA3F6A00BDDA33 /* NetworkService.swift in Sources */,

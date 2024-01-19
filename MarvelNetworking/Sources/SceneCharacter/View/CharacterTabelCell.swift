@@ -113,9 +113,8 @@ final class CharacterTabelCell: UITableViewCell {
 
 extension CharacterTabelCell: CharacterLoadProtocol {
     func createCharacterCell(_ character: Character?) {
-        let creatureImageURL = CreatureImageURL()
         nameCharacterLabel.text = character?.name ?? " "
         descriptionLabel.text = character?.description ?? " "
-        creatureImageURL.getDataImageСharacter(urlRequest: character?.thumbnail?.url, imageСharacter: imageСharacter)
+        CreatureImageURL.shared.getDataImageСharacter(urlRequest: character?.thumbnail?.url, imageСharacter: imageСharacter)
     }
 }

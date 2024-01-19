@@ -8,6 +8,16 @@
 import UIKit
 import Alamofire
 
+fileprivate enum Constants {
+    static let imageMarvelUIImageNamed = "Marvel"
+    static let searchButtonCharacterSetTitle = "CHOOSE YOUR SUPERHERO"
+    static let searchCharacterImage = "magnifyingglass"
+    static let searchCharacterPlaceholder = "SEARCH..."
+    static let alertTitle = "Персонаж не найден"
+    static let alertMessege = "Персонаж не существует во вселенной Marvel"
+    static let alertActionTitle = "OK"
+}
+
 final class CharacterTabelView: UIViewController {
     
     //MARK: - Outlets
@@ -26,7 +36,7 @@ final class CharacterTabelView: UIViewController {
     
     private lazy var imageMarvel: UIImageView = {
         var image = UIImageView()
-        image.image = UIImage(named: "Marvel")
+        image.image = UIImage(named: Constants.imageMarvelUIImageNamed)
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -49,8 +59,8 @@ final class CharacterTabelView: UIViewController {
         textField.borderStyle = .roundedRect
         textField.returnKeyType = .search
         textField.backgroundColor = .white
-        textField.setupLeftImage(imageName: "magnifyingglass")
-        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? "SEARCH...",
+        textField.setupLeftImage(imageName: Constants.searchCharacterImage)
+        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? Constants.searchCharacterPlaceholder,
                                                              attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -61,7 +71,7 @@ final class CharacterTabelView: UIViewController {
         button.backgroundColor = .red
         button.layer.cornerRadius = 5
         button.shadowButton()
-        button.setTitle("CHOOSE YOUR SUPERHERO", for: .normal)
+        button.setTitle(Constants.searchButtonCharacterSetTitle, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15.5, weight: .heavy)
         button.addTarget(self, action: #selector(search), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -87,9 +97,10 @@ final class CharacterTabelView: UIViewController {
     
     //: MARK: - Setups
 
-    @objc private func search() {
+    @objc 
+    private func search() {
         let networkService = NetworkService()
-        networkService.getData(name: searchCharacter.text) { [weak self] result in
+        networkService.getData(type: CharacterData.self, name: searchCharacter.text) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let characters):
@@ -107,10 +118,10 @@ final class CharacterTabelView: UIViewController {
     }
 
     func showAllert() {
-        let alert = UIAlertController(title: "Персонаж не найден",
-                                      message: "Персонаж не существует во вселенной Marvel",
+        let alert = UIAlertController(title: Constants.alertTitle,
+                                      message: Constants.alertMessege,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ОК", style: .destructive, handler:  { event in
+        alert.addAction(UIAlertAction(title: Constants.alertActionTitle, style: .destructive, handler:  { event in
             self.searchCharacter.text = ""
         }))
         self.present(alert, animated: true)
@@ -123,10 +134,10 @@ final class CharacterTabelView: UIViewController {
 
     private func setupHierarchy() {
         imageMarvelСonteiner.addSubview(imageMarvel)
-        view.addSubview(imageMarvelСonteiner)
-        view.addSubview(searchCharacter)
-        view.addSubview(searchButtonCharacter)
-        view.addSubview(tabelView)
+        view.addSubviews([imageMarvelСonteiner,
+                          searchCharacter,
+                          searchButtonCharacter,
+                          tabelView])
         tabelView.addSubview(indicator)
     }
 
@@ -164,7 +175,6 @@ final class CharacterTabelView: UIViewController {
 }
 
 extension CharacterTabelView: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.charactersData?.data?.results?.count ?? 0
     }

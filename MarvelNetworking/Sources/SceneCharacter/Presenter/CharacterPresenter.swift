@@ -40,7 +40,7 @@ final class CharacterPresenter: CharacterPresenterProtocol {
     //MARK: - Setup
     
     func getCharacter() {
-        networkService.getData(name: nil) { [weak self] result in
+        networkService.getData(type: CharacterData.self, name: nil) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let characters):

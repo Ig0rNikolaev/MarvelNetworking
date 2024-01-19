@@ -7,6 +7,10 @@
 
 import UIKit
 
+fileprivate enum Constants {
+    static let imageDetailUIImageNamed = "Marvel"
+}
+
 final class DetailCharacterView: UIViewController {
     
     var presenter: DetailPresenter?
@@ -15,7 +19,7 @@ final class DetailCharacterView: UIViewController {
     
     private lazy var imageDetailMarvel: UIImageView = {
         var image = UIImageView()
-        image.image = UIImage(named: "Marvel")
+        image.image = UIImage(named: Constants.imageDetailUIImageNamed)
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -71,8 +75,6 @@ final class DetailCharacterView: UIViewController {
         setupHierarchy()
         setupLayout()
         backgroundColor()
-
-        NotificationCenter.default.removeObserver(self)
     }
     
     //: MARK: - Setups
@@ -87,11 +89,11 @@ final class DetailCharacterView: UIViewController {
     
     private func setupHierarchy() {
         view.addSubview(scrollView)
-        scrollView.addSubview(imageDetailMarvel)
-        scrollView.addSubview(nameDetailCharacter)
-        scrollView.addSubview(imageDetailCharacter)
-        scrollView.addSubview(descriptionDetailLabel)
-        scrollView.addSubview(comixDetailLabel)
+        scrollView.addSubviews([imageDetailMarvel, 
+                                nameDetailCharacter,
+                                imageDetailCharacter, 
+                                descriptionDetailLabel,
+                                comixDetailLabel])
     }
 
     private func setupLayout() {
@@ -131,10 +133,9 @@ final class DetailCharacterView: UIViewController {
 
 extension DetailCharacterView: DetailViewProtocol {
     func setDetailCharacter(_ character: Character?) {
-        let creatureImageURL = CreatureImageURL()
         nameDetailCharacter.text = character?.name ?? " "
         descriptionDetailLabel.text = character?.description ?? " "
-        creatureImageURL.getDataImageСharacter(urlRequest: character?.thumbnail?.url, imageСharacter: imageDetailCharacter)
+        CreatureImageURL.shared.getDataImageСharacter(urlRequest: character?.thumbnail?.url, imageСharacter: imageDetailCharacter)
         guard let comics = character?.comics?.items else { return comixDetailLabel.text = ""}
         let comicNames = comics.compactMap { $0.name }.joined(separator: ", ")
         comixDetailLabel.text = comicNames
