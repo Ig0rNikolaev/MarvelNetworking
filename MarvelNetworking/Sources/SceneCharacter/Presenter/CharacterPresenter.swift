@@ -12,13 +12,14 @@ protocol CharacterLoadProtocol {
 protocol CharacterViewProtocol {
     func succes()
     func failure(error: Error)
+    func showAllert()
 }
 
 protocol CharacterPresenterProtocol {
     var charactersData: CharacterData? { get set }
     var characterView: CharacterViewProtocol? { get set }
     init(view: CharacterViewProtocol, networkService: NetworkServiceProtocol)
-    func getCharacter()
+    func search(searchCharacter: String?)
 }
 
 final class CharacterPresenter: CharacterPresenterProtocol {
@@ -48,6 +49,24 @@ final class CharacterPresenter: CharacterPresenterProtocol {
                     self.characterView?.succes()
                 case .failure(let error):
                     self.characterView?.failure(error: error)
+            }
+        }
+    }
+
+    func search(searchCharacter: String?) {
+        networkService.getData(type: CharacterData.self, name: searchCharacter) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let characters):
+                if let results = characters?.data?.results, results.contains(where: { $0.name?.range(of: searchCharacter ?? " ",
+                                                                                                     options: .caseInsensitive) != nil }) {
+                    charactersData = characters
+                    characterView?.succes()
+                } else {
+                    characterView?.showAllert()
+                }
+            case .failure(let error):
+                characterView?.failure(error: error)
             }
         }
     }

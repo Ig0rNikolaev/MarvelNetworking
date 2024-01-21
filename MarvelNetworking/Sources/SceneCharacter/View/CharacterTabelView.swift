@@ -95,33 +95,20 @@ final class CharacterTabelView: UIViewController {
         backgroundColor()
     }
     
-    //: MARK: - Setups
+    //: MARK: - Actions
 
     @objc 
     private func search() {
-        let networkService = NetworkService()
-        networkService.getData(type: CharacterData.self, name: searchCharacter.text) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let characters):
-                if let results = characters?.data?.results, results.contains(where: { $0.name?.range(of: self.searchCharacter.text ?? " ",
-                                                                                                     options: .caseInsensitive) != nil }) {
-                    self.presenter?.charactersData = characters
-                    self.presenter?.characterView?.succes()
-                } else {
-                    self.showAllert()
-                }
-            case .failure(let error):
-                self.presenter?.characterView?.failure(error: error)
-            }
-        }
+        presenter?.search(searchCharacter: self.searchCharacter.text)
     }
+
+    //: MARK: - Setups
 
     func showAllert() {
         let alert = UIAlertController(title: Constants.alertTitle,
                                       message: Constants.alertMessege,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Constants.alertActionTitle, style: .destructive, handler:  { event in
+        alert.addAction(UIAlertAction(title: Constants.alertActionTitle, style: .destructive, handler:  { _ in
             self.searchCharacter.text = ""
         }))
         self.present(alert, animated: true)
@@ -173,6 +160,8 @@ final class CharacterTabelView: UIViewController {
         ])
     }
 }
+
+//: MARK: - Extensions
 
 extension CharacterTabelView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

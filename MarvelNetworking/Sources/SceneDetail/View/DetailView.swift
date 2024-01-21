@@ -13,8 +13,8 @@ fileprivate enum Constants {
 
 final class DetailCharacterView: UIViewController {
     
-    var presenter: DetailPresenter?
-    
+    var presenter: DetailPresenterProtocol?
+
     //MARK: - Outlets
     
     private lazy var imageDetailMarvel: UIImageView = {
@@ -80,7 +80,7 @@ final class DetailCharacterView: UIViewController {
     //: MARK: - Setups
     
     private func setDetail() {
-        presenter?.setDetailCharacter()
+        presenter?.setDetailCharacter(imageСharacter: imageDetailCharacter)
     }
     
     private func backgroundColor() {
@@ -131,11 +131,12 @@ final class DetailCharacterView: UIViewController {
     }
 }
 
+//MARK: - Extensions
+
 extension DetailCharacterView: DetailViewProtocol {
     func setDetailCharacter(_ character: Character?) {
         nameDetailCharacter.text = character?.name ?? " "
         descriptionDetailLabel.text = character?.description ?? " "
-        CreatureImageURL.shared.getDataImageСharacter(urlRequest: character?.thumbnail?.url, imageСharacter: imageDetailCharacter)
         guard let comics = character?.comics?.items else { return comixDetailLabel.text = ""}
         let comicNames = comics.compactMap { $0.name }.joined(separator: ", ")
         comixDetailLabel.text = comicNames
